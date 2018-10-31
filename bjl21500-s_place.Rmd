@@ -1,0 +1,17 @@
+---
+title: "bjl21500-s_place"
+author: "Briana Lettsome"
+date: "October 31, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(viridis)
+
+library(p8105.datasets)
+
+library(plotly)
+```
+
+
