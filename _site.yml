@@ -6,7 +6,7 @@ navbar:
     - text: "About"
       href: about.html
     - icon: fa-envelope fa-lg
-      href: mailto:<bjl2150.columbia.edu>
+      href: mailto:<bjl2150cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/bjl21500
 output:
