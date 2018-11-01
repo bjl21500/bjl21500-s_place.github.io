@@ -192,13 +192,13 @@ $(document).ready(function () {
   <a href="about.html">About</a>
 </li>
 <li>
-  <a href="mailto:&lt;bjl2150.columbia.edu&gt;">
+  <a href="mailto:&lt;bjl2150cumc.columbia.edu&gt;">
     <span class="fa fa-envelope fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="http://github.com/&lt;bjl21500&gt;/">
+  <a href="https://github.com/bjl21500">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -219,7 +219,64 @@ $(document).ready(function () {
 </div>
 
 
+<pre class="r"><code>library(tidyverse)
+library(httr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;httr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:plotly&#39;:
+## 
+##     config</code></pre>
+<pre class="r"><code>library(jsonlite)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;jsonlite&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     flatten</code></pre>
+<pre class="r"><code>get_all_inspections = function(url) {
+  
+  all_inspections = vector(&quot;list&quot;, length = 0)
+  
+  loop_index = 1
+  chunk_size = 50000
+  DO_NEXT = TRUE
+  
+  while (DO_NEXT) {
+    message(&quot;Getting data, page &quot;, loop_index)
+    
+    all_inspections[[loop_index]] = 
+      GET(url,
+          query = list(`$order` = &quot;zipcode&quot;,
+                       `$limit` = chunk_size,
+                       `$offset` = as.integer((loop_index - 1) * chunk_size)
+                       )
+          ) %&gt;%
+      content(&quot;text&quot;) %&gt;%
+      fromJSON() %&gt;%
+      as_tibble()
+    
+    DO_NEXT = dim(all_inspections[[loop_index]])[1] == chunk_size
+    loop_index = loop_index + 1
+  }
+  
+  all_inspections
+  
+}
 
+url = &quot;https://data.cityofnewyork.us/resource/9w7m-hzhe.json&quot;
+
+nyc_inspections = get_all_inspections(url) %&gt;%
+  bind_rows() </code></pre>
+<pre><code>## Getting data, page 1</code></pre>
+<pre><code>## Getting data, page 2</code></pre>
+<pre><code>## Getting data, page 3</code></pre>
+<pre><code>## Getting data, page 4</code></pre>
+<pre><code>## Getting data, page 5</code></pre>
+<pre><code>## Getting data, page 6</code></pre>
+<pre><code>## Getting data, page 7</code></pre>
+<pre><code>## Getting data, page 8</code></pre>
+<pre class="r"><code>nyc_restaurants = nyc_inspections %&gt;%
+  janitor::clean_names() %&gt;%
+  select(boro, cuisine_description, grade, street)</code></pre>
 
 
 
