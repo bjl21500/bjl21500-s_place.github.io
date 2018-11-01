@@ -2,8 +2,8 @@
 title: "About"
 ---
 
-### About this site
+### Hi everyone. Welcome to my place!
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
-
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+This is a site where you can learn a little bit about me. I plan to post some
+of my work (my track record if you will) to see how far I've come and 
+where I can go.
