@@ -56,6 +56,7 @@ nyc_restaurants = nyc_inspections %>%
 ```{r}
 nyc_grades = nyc_restaurants %>%
   select(boro, grade) %>%
-  filter(grade != "N/A") 
+  filter(grade != "N/A") %>%
+  count(boro, grade)
 ```
 

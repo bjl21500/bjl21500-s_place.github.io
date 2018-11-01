@@ -283,7 +283,8 @@ nyc_inspections = get_all_inspections(url) %&gt;%
   filter(boro != &quot;Missing&quot;)</code></pre>
 <pre class="r"><code>nyc_grades = nyc_restaurants %&gt;%
   select(boro, grade) %&gt;%
-  filter(grade != &quot;N/A&quot;) </code></pre>
+  filter(grade != &quot;N/A&quot;) %&gt;%
+  count(boro, grade)</code></pre>
 
 
 
