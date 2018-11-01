@@ -219,14 +219,17 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>library(tidyverse)
-library(httr)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;httr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:plotly&#39;:
-## 
-##     config</code></pre>
-<pre class="r"><code>library(jsonlite)</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.0.0     v purrr   0.2.5
+## v tibble  1.4.2     v dplyr   0.7.6
+## v tidyr   0.8.1     v stringr 1.3.1
+## v readr   1.1.1     v forcats 0.3.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(httr)
+library(jsonlite)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;jsonlite&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
@@ -276,7 +279,11 @@ nyc_inspections = get_all_inspections(url) %&gt;%
 <pre><code>## Getting data, page 8</code></pre>
 <pre class="r"><code>nyc_restaurants = nyc_inspections %&gt;%
   janitor::clean_names() %&gt;%
-  select(boro, cuisine_description, grade, street)</code></pre>
+  select(boro, cuisine_description, grade, street) %&gt;%
+  filter(boro != &quot;Missing&quot;)</code></pre>
+<pre class="r"><code>nyc_grades = nyc_restaurants %&gt;%
+  select(boro, grade) %&gt;%
+  filter(grade != &quot;N/A&quot;) </code></pre>
 
 
 
