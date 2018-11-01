@@ -1,7 +1,9 @@
 ---
-title: "Holy cow!"
+title: "BJL21500's Place"
 ---
 
-### I have a webpage!
+### Hi everyone. Welcome to my place!
 
-And I can put all kinds of stuff on it!
+This is a site where you can learn a little bit about me. I plan to post some
+of my work (my track record if you will) to see how far I've come and 
+where I can go.
