@@ -90,5 +90,14 @@ plot_ly(nyc_scores, x = ~grade, y = ~score, type = "scatter", mode = "markers",
 ### Chart C
 
 ```{r}
+nyc_cuisine = nyc_restaurants %>%
+  select(grade, score, boro, cuisine_description) %>%
+  filter(cuisine_description == "Chinese",
+        grade %in% c("A", "B"), boro != "Missing")
+  
+
+nyc_cuisine %>%
+  plot_ly(y = ~score, color = ~boro, type = "box",
+          colors = "Set2")
 
 ```
