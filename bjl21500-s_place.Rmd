@@ -6,10 +6,15 @@ output: html_document
 ---
 
 ```{r}
+library(viridis)
+library(plotly)
 library(tidyverse)
 library(httr)
 library(jsonlite)
+```
 
+
+```{r}
 get_all_inspections = function(url) {
   
   all_inspections = vector("list", length = 0)
@@ -56,14 +61,26 @@ nyc_restaurants = nyc_inspections %>%
 
 # Graph 1
 ```{r}
+# Using the selelct, filter and count function in order to extract top-ranked eats
+twonyc_grades = nyc_restaurants %>%
+  select(grade, boro) %>%
+  filter(grade %in% c("A", "B"), boro != "Missing") %>%
+  count(boro)
+  
+# Making of bar graph to show the distribution of grade A and B restaurants per boro
+plot_ly(twonyc_grades, x = ~boro, y = ~n, color = ~boro, type = "bar")
+```
+
 nyc_grades = nyc_restaurants %>%
   select(boro, grade) %>%
   filter(grade %in% c("A", "B"), boro != "Missing") 
 
-
 nyc_grades %>%
   ggplot(aes(x = boro, fill = grade)) + 
   geom_bar()
+
+nyc_grades %>%
+   plot_ly(x = ~boro, y = ~count, color = ~boro, type = "bar")
 ```
 
 # Graph #2
@@ -74,9 +91,7 @@ library(plotly)
 
 nyc_scores = nyc_restaurants %>%
   select(score, grade, boro) %>%
-  filter(grade %in% c("A", "B", "C")) %>%
-  group_by(boro) %>%
-  summarize(n = n())
+  filter(grade %in% c("A", "B", "C"))
 ```
 
 common_neighborhoods =
