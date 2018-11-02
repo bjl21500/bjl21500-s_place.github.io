@@ -48,15 +48,18 @@ get_all_inspections = function(url) {
 url = "https://data.cityofnewyork.us/resource/9w7m-hzhe.json"
 
 nyc_inspections = get_all_inspections(url) %>%
-  bind_rows() 
-```
+  bind_rows() %>%
+  sample_n(1000)
 
-```{r}
+
+
 nyc_restaurants = nyc_inspections %>%
   janitor::clean_names() %>%
   select(boro, cuisine_description, grade, street, score) %>%
-  filter(boro != "Missing")
+  filter(boro != "Missing") %>%
+  sample_n(1000)
 ```
+
 
 
 # Graph 1
@@ -94,6 +97,7 @@ nyc_scores = nyc_restaurants %>%
   select(score, grade, boro) %>%
   filter(grade %in% c("A", "B", "C",
                       score %in% 0:50))
+  
 
 ## Scatterplot 
 plot_ly(nyc_scores, x = ~grade, y = ~score, type = "scatter", mode = "markers",
