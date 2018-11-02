@@ -279,8 +279,10 @@ nyc_inspections = get_all_inspections(url) %&gt;%
 <pre><code>## Getting data, page 8</code></pre>
 <pre class="r"><code>nyc_restaurants = nyc_inspections %&gt;%
   janitor::clean_names() %&gt;%
-  select(boro, cuisine_description, grade, street) %&gt;%
+  select(boro, cuisine_description, grade, street, score) %&gt;%
   filter(boro != &quot;Missing&quot;)</code></pre>
+<div id="graph-1" class="section level1">
+<h1>Graph 1</h1>
 <pre class="r"><code>nyc_grades = nyc_restaurants %&gt;%
   select(boro, grade) %&gt;%
   filter(grade %in% c(&quot;A&quot;, &quot;B&quot;), boro != &quot;Missing&quot;) 
@@ -290,6 +292,19 @@ nyc_grades %&gt;%
   ggplot(aes(x = boro, fill = grade)) + 
   geom_bar()</code></pre>
 <p><img src="bjl21500-s_place_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="graph-2" class="section level1">
+<h1>Graph #2</h1>
+<pre class="r"><code>nyc_scores = nyc_restaurants %&gt;%
+  select(score, grade, boro) %&gt;%
+  filter(grade %in% c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)) %&gt;%
+  group_by(boro) %&gt;%
+  summarize(n = n())</code></pre>
+<p>common_neighborhoods = nyc_airbnb %&gt;% count(neighbourhood, sort = TRUE) %&gt;% top_n(2000) %&gt;% select(neighbourhood)</p>
+<p>nyc_scores %&gt;% ggplot(aes(x = boro, y = score, fill = grade)) + geom_boxplot() + theme_classic() + theme(axis.text.x = element_text(angle = 90, hjust = 1))</p>
+<p>ggplot(nyc_scores, aes(x = boro, y = n)) + geom_violin(aes(fill = boro), color = “blue”, alpha = .5) + stat_summary(fun.y = median, geom = “point”, color = “blue”, size = 4)</p>
+<p>ggplot(nyc_scores, aes(x = score)) + geom_histogram()</p>
+</div>
 
 
 
