@@ -47,12 +47,15 @@ get_all_inspections = function(url) {
 url = "https://data.cityofnewyork.us/resource/9w7m-hzhe.json"
 
 nyc_inspections = get_all_inspections(url) %>%
-  bind_rows() 
+  bind_rows() %>%
+  sample_n(1000)
 
+
+# Wrangled and tidied the imported data to create a new dataset 
 nyc_restaurants = nyc_inspections %>%
   janitor::clean_names() %>%
   select(boro, cuisine_description, grade, street, score) %>%
-  filter(boro != "Missing")
+  filter(boro != "Missing") 
 ```
 
 Column {data-width=650}
