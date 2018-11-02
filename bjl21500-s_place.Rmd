@@ -74,25 +74,13 @@ plot_ly(twonyc_grades, x = ~boro, y = ~n, color = ~boro, type = "bar")
 ```
 
 
-nyc_grades = nyc_restaurants %>%
-  select(boro, grade) %>%
-  filter(grade %in% c("A", "B"), boro != "Missing") %>%
- 
-
-nyc_grades %>%
-  ggplot(aes(x = boro, fill = grade)) + 
-  geom_bar()
-
-nyc_grades %>%
-   plot_ly(x = ~boro, y = ~count, color = ~boro, type = "bar")
-
-# Graph #2
+# Graph 2
 ```{r}
 nyc_scores = nyc_restaurants %>%
-  select(score, grade, boro) %>%
-  filter(grade %in% c("A", "B", "C",
-                      score %in% 0:50))
-  
+    select(score, grade, boro) %>%
+    filter(grade %in% c("A", "B", "C",
+                      score %in% 0:50)) 
+
 
 ## Scatterplot 
 plot_ly(nyc_scores, x = ~grade, y = ~score, type = "scatter", mode = "markers",
@@ -100,22 +88,17 @@ plot_ly(nyc_scores, x = ~grade, y = ~score, type = "scatter", mode = "markers",
           color = ~boro)
 ```
 
-common_neighborhoods =
-  nyc_airbnb %>% 
-  count(neighbourhood, sort = TRUE) %>% 
-  top_n(2000) %>% 
-  select(neighbourhood)
+#Graph 3
+```{r}
+nyc_cuisine = nyc_restaurants %>%
+  select(grade, score, boro, cuisine_description) %>%
+  filter(cuisine_description == "Chinese",
+        grade %in% c("A", "B"), boro != "Missing") %>
 
-nyc_scores %>%
-   ggplot(aes(x = boro, y = score, fill = grade)) +
-  geom_boxplot() +
-  theme_classic() + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+nyc_cuisine %>%
+  plot_ly(y = ~, color = boro, type = "box",
+          colors = "Set2")
 
+  
+```
 
-ggplot(nyc_scores, aes(x = boro, y = n)) + 
-  geom_violin(aes(fill = boro), color = "blue", alpha = .5) + 
-  stat_summary(fun.y = median, geom = "point", color = "blue", size = 4)
-
-ggplot(nyc_scores, aes(x = score)) + 
-  geom_histogram()

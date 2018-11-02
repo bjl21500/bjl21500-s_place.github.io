@@ -1,4 +1,3 @@
----
 title: "Untitled"
 output: 
   flexdashboard::flex_dashboard:
@@ -47,12 +46,15 @@ get_all_inspections = function(url) {
 url = "https://data.cityofnewyork.us/resource/9w7m-hzhe.json"
 
 nyc_inspections = get_all_inspections(url) %>%
-  bind_rows() 
+  bind_rows() %>%
+  sample_n(1000)
 
+
+# Wrangled and tidied the imported data to create a new dataset 
 nyc_restaurants = nyc_inspections %>%
   janitor::clean_names() %>%
   select(boro, cuisine_description, grade, street, score) %>%
-  filter(boro != "Missing")
+  filter(boro != "Missing") 
 ```
 
 Column {data-width=650}
@@ -75,7 +77,14 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
+nyc_scores = nyc_restaurants %>%
+    select(score, grade, boro) %>%
+    filter(grade %in% c("A", "B", "C",
+                      score %in% 0:50)) 
 
+plot_ly(nyc_scores, x = ~grade, y = ~score, type = "scatter", mode = "markers",
+          alpha = 0.5, 
+          color = ~boro)
 ```
 
 ### Chart C
