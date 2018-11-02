@@ -68,6 +68,10 @@ nyc_grades %>%
 
 # Graph #2
 ```{r}
+library(viridis)
+library(plotly)
+
+
 nyc_scores = nyc_restaurants %>%
   select(score, grade, boro) %>%
   filter(grade %in% c("A", "B", "C")) %>%
