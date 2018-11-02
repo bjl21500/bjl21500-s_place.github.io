@@ -71,9 +71,11 @@ twonyc_grades = nyc_restaurants %>%
 plot_ly(twonyc_grades, x = ~boro, y = ~n, color = ~boro, type = "bar")
 ```
 
+
 nyc_grades = nyc_restaurants %>%
   select(boro, grade) %>%
-  filter(grade %in% c("A", "B"), boro != "Missing") 
+  filter(grade %in% c("A", "B"), boro != "Missing") %>%
+ 
 
 nyc_grades %>%
   ggplot(aes(x = boro, fill = grade)) + 
@@ -81,7 +83,6 @@ nyc_grades %>%
 
 nyc_grades %>%
    plot_ly(x = ~boro, y = ~count, color = ~boro, type = "bar")
-```
 
 # Graph #2
 ```{r}
@@ -91,7 +92,13 @@ library(plotly)
 
 nyc_scores = nyc_restaurants %>%
   select(score, grade, boro) %>%
-  filter(grade %in% c("A", "B", "C"))
+  filter(grade %in% c("A", "B", "C",
+                      score %in% 0:50))
+
+## Scatterplot 
+plot_ly(nyc_scores, x = ~grade, y = ~score, type = "scatter", mode = "markers",
+          alpha = 0.5, 
+          color = ~boro)
 ```
 
 common_neighborhoods =
