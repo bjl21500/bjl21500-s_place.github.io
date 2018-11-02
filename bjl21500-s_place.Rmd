@@ -56,7 +56,11 @@ nyc_restaurants = nyc_inspections %>%
 ```{r}
 nyc_grades = nyc_restaurants %>%
   select(boro, grade) %>%
-  filter(grade != "N/A") %>%
-  count(boro, grade)
+  filter(grade %in% c("A", "B"), boro != "Missing") 
+
+
+nyc_grades %>%
+  ggplot(aes(x = boro, fill = grade)) + 
+  geom_bar()
 ```
 
