@@ -14,5 +14,51 @@ title: "About"
 
 
 This is a site where you can learn a little bit about me. I plan to post some
-of my work (my track record if you will) to see how far I've come and 
-where I can go. 
+of my work (my track record if you will) to show how far I've come and 
+where I my talents can potentially take me. 
+
+### EDUCATION
+COLUMBIA UNIVERSITY MAILMAN SCHOOL OF PUBLIC HEALTH       		            	
+MPH in Epidemiology, Certificate in Infectious Disease Epidemiology 
+Expected May 2019
+    
+
+RIDER UNIVERSITY
+Lawrenceville, NJ				   		       	      
+Bachelor of Science, Biology 	
+September 2012 - December 2016
+
+	
+### PROFESSIONAL EXPERIENCE
+ROY L. SCHNEIDER REGIONAL MEDICAL CENTER              		         		
+St. Thomas, U.S. Virgin Islands
+Summer Intern, Intensive Care Unit	
+June 2017 – July 2017
+
+
+VIRGIN ISLANDS DEPARTMENT OF HEALTH  
+St. Thomas, U.S. Virgin Islands
+Volunteer, Epidemiology Division – Zika Program 
+March 2017 – June 2017
+
+
+
+COLUMBIA UNIVERSITY MEDICAL CENTER
+New York, NY
+Summer Public Health Scholars Program				                      		              May 2016 – August 2016
+•	Analyzed public health case studies and identified pitfalls and interventions
+•	Collaborated with an MPH student in the Urban Health Initiative at Columbia University to improve indoor air quality of Red Hook public housing units
+•	Research resulted in presentation at culmination of program entitled” Examining the Relationship Between the Food Environment and Health Behavior in Low-Income Settings”
+RIDER UNIVERSITY							     		                         Lawrenceville, NJ
+Senior Admissions Fellow, Admissions Tour Guide,				   	                       September 2015 – May 2016
+•	Supervised and trained 50 newly hired tour guides to disseminate information regarding the university to prospective students and families
+•	Selected for 3 panel discussions to communicate my academic experiences to prospective students and their families
+RIDER UNIVERSITY	  						      		                         Lawrenceville, NJ
+Research Assistant, Ronald E. McNair Scholar			       	          	 	              June 2013 – August 2013
+•	Analyzed immune response in mice using ELIZA as a precursor to determining possibility of using blood as a biomarker for ovarian cancer in women
+•	Research culminated in a presentation at the Southeastern Association of Educational Opportunity Program Personnel (SAEOPP) McNair/SSS Scholars Research Conference in Atlanta, Georgia
+VOLUNTEER LEADERSHIP
+•	Volunteer, April 2017. Volunteered with U.S. Virgin Islands Department of Health to distribute health permits to 83 food establishments upon inspection
+SKILLS
+•	Experienced with Microsoft Word and PowerPoint, SAS (Spring 2018), R programming (Fall 2018)
+
